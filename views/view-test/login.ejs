@@ -34,6 +34,7 @@
     </div>
 
     <script>
+      const host = `https://game-black-jack-mdt.herokuapp.com/`;
       const inputName = document.getElementById('name');
       const buttonSave = document.getElementById('save');
       inputName.oninput = (e) => {
@@ -45,7 +46,7 @@
       };
       buttonSave.onclick = () => {
         localStorage.setItem('name', inputName.value);
-        window.location.replace('http://localhost:3000/home');
+        window.location.replace(`${host}/home`);
       };
     </script>
   </body>

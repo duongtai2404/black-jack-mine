@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-      const host = 'http://localhost:3000';
+      const host = 'https://game-black-jack-mdt.herokuapp.com/';
       const name = localStorage.getItem('name');
       if (name === null) {
         window.location.replace(`${host}/login`);
@@ -78,7 +78,9 @@
               </button>
             </div>
             <div style="margin-top: 80px; text-align: center">
-              <a href="http://localhost:3000/login">Đổi tên</a>
+              <a href="https://game-black-jack-mdt.herokuapp.com/login"
+                >Đổi tên</a
+              >
             </div>
           </div>
         </div>

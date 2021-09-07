@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link defer rel="stylesheet" href="/assets/css/sub-css/dealer.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const rawData = '<%- JSON.stringify(data) %>';
+      const data = JSON.parse(rawData);
+    </script>
+
+    <title>Dealer</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="code">
+        <p style="display: inline-block">Mã phòng :</p>
+        <h4 style="display: inline-block"><%= data.roomId %></h4>
+      </div>
+      <div class="teammate">
+        <ul class="list-group row list-player" id="player-list">
+          <% const players = data.players; %> <% const dealer = data.dealer; %>
+          <% for(let i=0; i < players.length; i++) { %> <%let turnPlayer =
+          players[i].turnPlugOut === false ? '' : 'turn-player'; %>
+          <li
+            class="
+              list-group-item
+              col-md-2 col-lg-3 col-xl-3
+              list-player-item
+              <%=
+              turnPlayer
+              %>
+            "
+            id="<%= players[i].playerId %>-player"
+          >
+            <%let notificationTurn = players[i].turnPlugOut === false ? '' :
+            'Lượt người chơi';%>
+
+            <h5
+              class="notification-turn"
+              id="<%= players[i].playerId %>-notification-turn"
+            >
+              <%= notificationTurn %>
+            </h5>
+            <div class="every-teammate">
+              <div class="header-item d-flex justify-content-center">
+                <div class="w-75 clearfix">
+                  <p
+                    class="float-start"
+                    style="
+                      color: white;
+                      font-size: 1.2rem;
+                      font-weight: 600;
+                      font-style: italic;
+                    "
+                  >
+                    <%= players[i].playerName %>
+                  </p>
+                  <p
+                    class="float-end"
+                    id="<%= players[i].playerId %>-bet"
+                    style="color: white"
+                  >
+                    Cược : <%= players[i].bet %>
+                  </p>
+                </div>
+              </div>
+              <div class="body-item" id="<%= players[i].playerId%>-list-card">
+                <% for(let j=0; j < players[i].curCards.length; j++) {%>
+                <img src="/assets/img/0.png" alt="" class="player-card-item" />
+                <%};%>
+              </div>
+              <div
+                class="check-card-player"
+                id="<%= players[i].playerId%>-check-card-player"
+              >
+                <img
+                  src="/assets/img/eye-regular.svg"
+                  alt=""
+                  style="width: 20px"
+                />
+                <p class="content-check-card-player">Xét bài</p>
+              </div>
+            </div>
+          </li>
+
+          <% } %>
+        </ul>
+      </div>
+      <div class="dealer row">
+        <div
+          class="start col-3 d-flex justify-content-around align-items-center"
+        >
+          <button
+            type="button"
+            class="btn btn-info"
+            id="distributeCard"
+            disabled
+          >
+            Phát bài
+          </button>
+          <button type="button" class="btn btn-warning" id="playAgain" disabled>
+            Chơi lại
+          </button>
+          <button type="button" class="btn btn-danger">Thoát</button>
+        </div>
+        <% let turnDealer = dealer.turnPlugOut === true ? 'turn-dealer' : ''%>
+        <div class="body col-6 <%= turnDealer %>" id="dealer">
+          <h3 class="dealer-name <%= turnDealer %>" id="dealer-name">
+            <%= dealer.dealerName %>
+          </h3>
+          <div>
+            <ul
+              class="list-group row list-dealer-card"
+              id="list-dealer-card-item"
+            >
+              <% const curCardsDealer = dealer.curCards;%> <% for(let i=0; i <
+              curCardsDealer.length; i++) { %>
+              <li class="list-group-item col-2 list-dealer-card-item">
+                <div class="item">
+                  <img
+                    src="/assets/img/<%= curCardsDealer[i] %>.png"
+                    alt=""
+                    class="card-item-img"
+                  />
+                </div>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+        <div class="end col-3 d-flex justify-content-start align-items-center">
+          <button type="button" class="btn btn-info" id="openBet">
+            Mở cược
+          </button>
+          <button
+            type="button"
+            class="btn btn-success"
+            id="plugOutCard"
+            disabled
+          >
+            Rút bài
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="position-fixed bottom-0 end-0 p-3 main-toast"
+      style="z-index: 11"
+    >
+      <div
+        id="liveToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-body" id="contentToast"></div>
+      </div>
+    </div>
+  </body>
+  <script src="/script/sub-script/dealer.js"></script>
+</html>

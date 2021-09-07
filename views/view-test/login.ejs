@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+
+    <link defer rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <style>
+      button:disabled {
+        background-color: grey;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="name-form">
+        <span class="name-form__text-welcome">xì-Dách</span>
+        <span class="name-form__text-name">Cho mình xin cái tên nè?</span>
+        <input
+          id="name"
+          type="text"
+          class="name-form__input"
+          placeholder="Tên bạn nè"
+          autocomplete="off"
+        />
+        <button id="save" class="name-form__save-btn btn" disabled>
+          Chốt tên nè!
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const inputName = document.getElementById('name');
+      const buttonSave = document.getElementById('save');
+      inputName.oninput = (e) => {
+        if (e.target.value !== '') {
+          buttonSave.disabled = false;
+        } else {
+          buttonSave.disabled = true;
+        }
+      };
+      buttonSave.onclick = () => {
+        localStorage.setItem('name', inputName.value);
+        window.location.replace('http://localhost:3000/home');
+      };
+    </script>
+  </body>
+</html>

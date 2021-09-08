@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const ioController = require('./controllers/io.controller');
 
+app.use(express.static('public'));
+
 const createCards = () => {
   let cards = [];
   for (let index = 1; index < 53; index++) {
@@ -21,11 +23,9 @@ const gameStore = new Map();
 //{roomId : {dealer: dealerId , players : []}}
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.redirect('/home');

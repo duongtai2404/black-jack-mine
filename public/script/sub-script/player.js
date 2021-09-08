@@ -106,6 +106,7 @@ socket.on('player-connection', (player) => {
 
 socket.on('allow-bet', () => {
   betButton.disabled = false;
+  showToast('Nhà cái đã mở cược');
 });
 
 //handle-bet

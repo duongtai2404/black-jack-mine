@@ -1,22 +1,3 @@
-//game store = {
-//  roomId : {
-//   dealer: {
-//     dealerId,
-//     dealerName,
-//     curCards : []
-//   },
-//   player : [
-//     {
-//       playerId,
-//       playerName,
-//       curCards : [],
-//        bet: 0
-//     }
-//   ],
-//   cards : []
-// }
-//}
-
 const createCards = () => {
   let cards = [];
   for (let index = 1; index < 53; index++) {

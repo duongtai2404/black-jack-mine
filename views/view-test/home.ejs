@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-      // const host = 'https://game-black-jack-mdt.herokuapp.com';
-      const host = 'http://localhost:3000/';
+      const host = 'https://game-black-jack-mdt.herokuapp.com';
+      // const host = 'http://localhost:3000/';
       const name = localStorage.getItem('name');
       if (name === null) {
         window.location.replace(`${host}/login`);

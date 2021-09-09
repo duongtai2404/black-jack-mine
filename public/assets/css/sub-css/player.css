@@ -12,11 +12,9 @@
   flex-direction: column;
   justify-content: space-around;
 }
-
 .room-info {
   display: flex;
 }
-
 .room-info__code {
   background-color: var(--white-color);
   display: flex;
@@ -29,7 +27,6 @@
   box-shadow: 0 2px 1px var(--shadow-color);
   color: var(--text-color);
 }
-
 .dealer {
   display: flex;
   flex-direction: column;
@@ -41,7 +38,6 @@
   justify-content: space-between;
   height: 160px;
 }
-
 .dealer__name {
   font-size: 1.7rem;
   font-weight: 600;
@@ -49,40 +45,32 @@
   color: white;
   margin-bottom: 5px;
 }
-
 .player-bet-done {
   border: 3px solid #0dcaf0;
 }
-
 .player-area {
   margin-top: 80px;
   display: flex;
-  /* justify-content: space-evenly; */
 }
-
 .exit {
   display: flex;
   align-items: flex-end;
 }
-
 .player-bet {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
-
 .player-bet__input {
   font-size: 1.4rem;
   text-align: center;
   line-height: 1.4rem;
   height: 40px;
 }
-
 .player-bet__btn {
   margin-top: 10px;
   background-color: aqua;
 }
-
 .player {
   display: flex;
   flex-direction: column;
@@ -120,26 +108,19 @@
   color: white;
   font-weight: 600;
 }
-
 .player-control {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
 }
-
 .done-btn {
   margin-top: 10px;
 }
-
 .player-bet__btn:disabled {
   cursor: not-allowed;
   background-color: grey;
 }
-
-.card-list-current-player {
-  background-color: initial;
-}
-
+.card-list-current-player,
 .card-list-dealer {
   background-color: initial;
 }
@@ -172,8 +153,6 @@
   background-color: #dc3545;
   border-color: #dc3545;
 }
-
-/* --------------- */
 .list-player-item {
   margin: 0 30px 50px;
   border-radius: 10px;

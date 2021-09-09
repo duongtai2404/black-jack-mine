@@ -11,7 +11,6 @@
       crossorigin="anonymous"
     />
     <link defer rel="stylesheet" href="/assets/css/sub-css/dealer.css" />
-    <script src="/socket.io/socket.io.js"></script>
     <script>
       const rawData = '<%- JSON.stringify(data) %>';
       const data = JSON.parse(rawData);
@@ -166,6 +165,13 @@
         <div class="toast-body" id="contentToast"></div>
       </div>
     </div>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script>
+      window.addEventListener('load', () => {
+        const script = document.createElement('script');
+        script.src = '/dist/dealer.js';
+        document.body.appendChild(script);
+      });
+    </script>
   </body>
-  <script src="/dist/dealer.js"></script>
 </html>

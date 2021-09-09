@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="/assets/css/reset.css" />
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/sub-css/player.css" />
-    <script src="/socket.io/socket.io.js"></script>
-
     <script>
       const rawData = '<%- JSON.stringify(data) %>';
       const data = JSON.parse(rawData);
@@ -229,6 +227,13 @@
         <div class="toast-body" id="notification-toast">Bạn đã mở cược</div>
       </div>
     </div>
-    <script src="/dist/player.js"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script>
+      window.addEventListener('load', () => {
+        const script = document.createElement('script');
+        script.src = '/dist/player.js';
+        document.body.appendChild(script);
+      });
+    </script>
   </body>
 </html>
